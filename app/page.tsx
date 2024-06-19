@@ -1,7 +1,8 @@
 import Hero from "@/components/Hero";
 import { FloatingNav } from "@/components/ui/Floating-navbar";
 import { FaHome } from "react-icons/fa";
-import { Grid } from "../components/Grid";
+import Grid from "../components/Grid";
+import Mask from "@/components/Mask";
 export default function Home() {
   return (
     <main className="relative bg-black-100 flex justify-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
@@ -11,6 +12,7 @@ export default function Home() {
         />
         <Hero />
         <Grid />
+        <Mask />
       </div>
     </main>
   );

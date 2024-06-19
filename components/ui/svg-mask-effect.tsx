@@ -7,7 +7,7 @@ export const MaskContainer = ({
   children,
   revealText,
   size = 10,
-  revealSize = 600,
+  revealSize = 400,
   className,
 }: {
   children?: string | React.ReactNode;
@@ -55,7 +55,7 @@ export const MaskContainer = ({
         }}
         transition={{ type: "tween", ease: "backOut", duration: 0.1 }}
       >
-        <div className="absolute inset-0 bg-black h-full w-full z-0 opacity-50" />
+        <div className="absolute inset-0 bg-black h-full w-screen z-0 opacity-50" />
         <div
           onMouseEnter={() => {
             setIsHovered(true);
