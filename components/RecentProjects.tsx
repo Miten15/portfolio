@@ -17,7 +17,7 @@ const RecentProjects = () => {
           </span>
         </h1>
         <div className="overflow-auto">
-          <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
+          <div className="flex flex-wrap items-center justify-center p-4 gap-16 ">
             {projects.map(({ id, title, des, img, iconLists, link }) => (
               <div
                 key={id}
