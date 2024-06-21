@@ -12,9 +12,9 @@ const Mask = () => {
         }
         className="h-[40rem] border rounded-md"
       >
-        Hi, I'm a very <span className="text-red-500">creative</span>
-        {""} dev.My favorite framework is {""}
-        <span className="text-red-500">Next.js.</span>.
+        Hi, I'm a very <span className="text-purple">creative</span>
+        {""} dev. My favorite framework is {""}
+        <span className="text-purple">Next.js.</span>
       </MaskContainer>
     </div>
   );

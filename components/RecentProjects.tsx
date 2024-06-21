@@ -9,7 +9,7 @@ const words = ["recent", "amazing", "great"];
 
 const RecentProjects = () => {
   return (
-    <div className="relative py-20">
+    <div className="relative py-20" id="projects">
       <BackgroundBeams className="py-10 mt-15 absolute inset-0 z-0" />
       <div className="relative z-10">
         <h1 className="heading">

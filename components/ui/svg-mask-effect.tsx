@@ -42,7 +42,7 @@ export const MaskContainer = ({
       ref={containerRef}
       className={cn("h-screen relative", className)}
       animate={{
-        backgroundColor: isHovered ? "var(--slate-900)" : "var(--black)",
+        backgroundColor: isHovered ? "var(--slate-900)" : "var(--transparent)",
       }}
     >
       <motion.div
