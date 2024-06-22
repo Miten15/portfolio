@@ -5,6 +5,7 @@ import Grid from "../components/Grid";
 import Mask from "@/components/Mask";
 import RecentProjects from "@/components/RecentProjects";
 import { navItems } from "@/data";
+import WorkExp from "@/components/WorkExp";
 export default function Home() {
   return (
     <main className="relative bg-black-100 flex justify-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
@@ -14,6 +15,7 @@ export default function Home() {
         <Grid />
         <Mask />
         <RecentProjects />
+        <WorkExp />
       </div>
     </main>
   );

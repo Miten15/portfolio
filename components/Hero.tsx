@@ -74,7 +74,7 @@ const Hero = () => {
             <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-1/4" />
           </div>
           <div className="pt-100">
-            <a href="#about">
+            <a href="#projects">
               <MagicButton
                 title="Show my work"
                 icon={<FaLocationArrow />}

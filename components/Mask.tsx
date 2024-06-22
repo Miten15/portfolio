@@ -7,13 +7,13 @@ const Mask = () => {
       <MaskContainer
         revealText={
           <p className="max-w-4xl mx-auto text-slate-800 text-center  text-4xl font-bold my-10 ">
-            Hi, I'm a very lazy dev. My favorite framework is Copy-Paste.js.
+            Hi, I'm a very lazy dev & My favorite framework is Copy-Paste.js.
           </p>
         }
         className="h-[40rem] border rounded-md"
       >
         Hi, I'm a very <span className="text-purple">creative</span>
-        {""} dev. My favorite framework is {""}
+        {""} dev & My favorite framework is {""}
         <span className="text-purple">Next.js.</span>
       </MaskContainer>
     </div>
