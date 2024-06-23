@@ -5,17 +5,28 @@ import {
   useAnimation,
   useMotionTemplate,
 } from "framer-motion";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, MouseEvent } from "react";
 import { cn } from "@/utils/cn";
 
-export const EvervaultCard = ({
+interface EvervaultCardProps {
+  text: string;
+  description: string;
+  phase: string;
+  className?: string;
+}
+
+interface CardPatternProps {
+  mouseX: any; // You can refine this type if needed
+  mouseY: any; // You can refine this type if needed
+  randomString: string;
+  controls: any; // You can refine this type if needed
+}
+
+export const EvervaultCard: React.FC<EvervaultCardProps> = ({
   text,
   description,
+  phase,
   className,
-}: {
-  text?: string;
-  description?: string;
-  className?: string;
 }) => {
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
@@ -29,7 +40,11 @@ export const EvervaultCard = ({
     setRandomString(str);
   }, []);
 
-  function onMouseMove({ currentTarget, clientX, clientY }: any) {
+  function onMouseMove({
+    currentTarget,
+    clientX,
+    clientY,
+  }: MouseEvent<HTMLDivElement>) {
     let { left, top } = currentTarget.getBoundingClientRect();
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
@@ -40,7 +55,7 @@ export const EvervaultCard = ({
     controls.start({ opacity: 1 });
     setTimeout(() => {
       setShowContent(true);
-    }, 700); // Show content after 0.7 sec
+    }, 700);
   }
 
   function handleMouseLeave() {
@@ -51,10 +66,7 @@ export const EvervaultCard = ({
 
   return (
     <div
-      className={cn(
-        "p-0.5  bg-transparent aspect-square  flex items-center justify-center w-full h-full relative",
-        className
-      )}
+      className={`p-0.5 bg-transparent aspect-square flex items-center justify-center w-full h-full relative ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onMouseMove={onMouseMove}
@@ -66,6 +78,18 @@ export const EvervaultCard = ({
           randomString={randomString}
           controls={controls}
         />
+        {!hovered && (
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: hovered ? 0 : 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="relative h-20 w-20  bg-transparent text-white flex items-center justify-center font-bold text-lg">
+              {phase}
+            </div>
+          </motion.div>
+        )}
         {showContent && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -87,7 +111,12 @@ export const EvervaultCard = ({
   );
 };
 
-export function CardPattern({ mouseX, mouseY, randomString, controls }: any) {
+export const CardPattern: React.FC<CardPatternProps> = ({
+  mouseX,
+  mouseY,
+  randomString,
+  controls,
+}) => {
   let maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`;
   let style = { maskImage, WebkitMaskImage: maskImage };
 
@@ -111,11 +140,11 @@ export function CardPattern({ mouseX, mouseY, randomString, controls }: any) {
       </motion.div>
     </div>
   );
-}
+};
 
 const characters =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-export const generateRandomString = (length: number) => {
+export const generateRandomString = (length: number): string => {
   let result = "";
   for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * characters.length));
@@ -123,7 +152,12 @@ export const generateRandomString = (length: number) => {
   return result;
 };
 
-export const Icon = ({ className, ...rest }: any) => {
+interface IconProps {
+  className?: string;
+  [key: string]: any; // Allows any additional props to be passed to the SVG element
+}
+
+export const Icon: React.FC<IconProps> = ({ className, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

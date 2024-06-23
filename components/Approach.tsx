@@ -7,17 +7,22 @@ export function Approach() {
     {
       id: 1,
       title: "Planning",
-      des: "A comprehensive plan and strategy for your project.",
+      description: "A comprehensive plan and strategy for your project.",
+      phase: "Phase 1",
     },
     {
       id: 2,
       title: "Update",
-      des: "Regular updates on development progress to keep you informed.",
+      description:
+        "Regular updates on development progress to keep you informed.",
+      phase: "Phase 2",
     },
     {
       id: 3,
       title: "Launch",
-      des: "Final development phase and launching your project successfully.",
+      description:
+        "Final development phase and launching your project successfully.",
+      phase: "Phase 3",
     },
   ];
 
@@ -38,7 +43,12 @@ export function Approach() {
           <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
           <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
 
-          <EvervaultCard text={card.title} description={card.des} />
+          <EvervaultCard
+            text={card.title}
+            description={card.description}
+            phase={card.phase}
+            className={undefined}
+          />
         </div>
       ))}
     </div>
