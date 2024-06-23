@@ -22,7 +22,7 @@ export function Approach() {
   ];
 
   return (
-    <div className="flex flex-wrap justify-center mb-20" id="approach">
+    <div className="flex flex-wrap justify-center" id="approach">
       <div className="py-20 w-full text-center">
         <h1 className="heading">
           My <span className="text-purple">Approach</span>
@@ -38,11 +38,7 @@ export function Approach() {
           <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
           <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
 
-          <EvervaultCard text={card.title} />
-
-          <h2 className="card-description dark:text-white text-black mt-4 text-sm font-light">
-            {card.des}
-          </h2>
+          <EvervaultCard text={card.title} description={card.des} />
         </div>
       ))}
     </div>
