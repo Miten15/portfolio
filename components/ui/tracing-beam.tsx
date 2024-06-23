@@ -43,9 +43,9 @@ export const TracingBeam = ({
   return (
     <motion.div
       ref={ref}
-      className={cn("relative w-full max-w-screen mx-5 h-full", className)}
+      className={cn("relative w-full max-w-screen  h-full", className)}
     >
-      <div className="absolute -left-[7px] md:-left-20 top-3">
+      <div className="absolute left-[-20px] sm:left-[-10px] top-3">
         <svg
           viewBox={`0 0 20 ${svgHeight}`}
           width="20"
