@@ -45,7 +45,7 @@ export const TracingBeam = ({
       ref={ref}
       className={cn("relative w-full max-w-screen  h-full", className)}
     >
-      <div className="absolute left-[-20px] sm:left-[-10px] top-3">
+      <div className="absolute -left-[-20px] lg:left-[-47px] sm:left-[-10px] top-3">
         <svg
           viewBox={`0 0 20 ${svgHeight}`}
           width="20"
