@@ -2,7 +2,7 @@
 import React from "react";
 import { EvervaultCard, Icon } from "./ui/evervault-card";
 
-export function Approach() {
+const Approach: React.FC = () => {
   const cardContent = [
     {
       id: 1,
@@ -53,4 +53,6 @@ export function Approach() {
       ))}
     </div>
   );
-}
+};
+
+export default Approach;
