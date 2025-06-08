@@ -78,8 +78,8 @@ const RecentProjects = () => {
                             <Image
                               src={icon}
                               alt={`icon-${index}`}
-                              width={20}
-                              height={20}
+                              width={42}
+                              height={42}
                               // sizes prop might not be strictly necessary here due to fixed small size
                               // but can be added if responsive scaling is intended
                               className="p-2"

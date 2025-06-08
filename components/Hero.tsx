@@ -56,15 +56,15 @@ const Hero = () => {
       <div className="flex justify-center items-center relative my-20 z-10">
         <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
           <p className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">
-            A UI/UX & Full-Stack Dev
+            A Full-Stack Dev & Cyber-Sec Analyst
           </p>
           <TextGenerateEffect
-            words="I transform concepts into seamless user experiences"
+            words="I Transform Concepts into seamless user experiences"
             className="text-center text-[40px] md:text-5xl lg:text-6xl"
           />
 
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl text-white">
-            Hi! I&apos;m Miten, a Next.js Developer based in India.
+            Hi! I&apos;m Miten, a Developer based in India.
           </p>
 
           <div className="w-[40rem] h-40 relative">
