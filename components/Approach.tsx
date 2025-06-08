@@ -38,16 +38,16 @@ const Approach: React.FC = () => {
           key={card.id}
           className="border border-black/[0.2] dark:border-white/[0.2] max-w-sm mx-4 mb-8 p-4 relative h-[30rem]"
         >
-          <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
-          <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
-          <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
-          <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
+          <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-white" />
+          <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-white" />
+          <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-white" />
+          <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-white" />
 
           <EvervaultCard
             text={card.title}
             description={card.description}
             phase={card.phase}
-            className={undefined}
+            className={"text-white"}
           />
         </div>
       ))}

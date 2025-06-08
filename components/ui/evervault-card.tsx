@@ -99,9 +99,9 @@ export const EvervaultCard: React.FC<EvervaultCardProps> = ({
           >
             <div className="relative h-44 w-44 rounded-full flex items-center justify-center text-white font-bold text-4xl">
               <div className="absolute w-full h-full bg-transparent blur-sm rounded-full" />
-              <span className="dark:text-white text-black z-20">{text}</span>
+              <span className="dark:text-white text-white z-20">{text}</span>
             </div>
-            <p className="dark:text-white text-black z-20 mt-4 text-sm">
+            <p className="dark:text-white text-white z-20 mt-4 text-sm px-2">
               {description}
             </p>
           </motion.div>

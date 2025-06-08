@@ -59,11 +59,11 @@ const Hero = () => {
             A UI/UX & Full-Stack Dev
           </p>
           <TextGenerateEffect
-            words="Transforming Concepts into Seamless User Experiences"
+            words="I transform concepts into seamless user experiences"
             className="text-center text-[40px] md:text-5xl lg:text-6xl"
           />
 
-          <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
+          <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl text-white">
             Hi! I&apos;m Miten, a Next.js Developer based in India.
           </p>
 
