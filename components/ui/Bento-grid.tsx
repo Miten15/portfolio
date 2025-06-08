@@ -1,13 +1,18 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react"; // Added useEffect for dynamic import
 import { IoCopyOutline } from "react-icons/io5";
-import Lottie from "react-lottie";
+import dynamic from "next/dynamic"; // Import dynamic from next/dynamic
 import { cn } from "@/utils/cn";
 import { BackgroundGradientAnimation } from "./GradientBg";
 import animationData from "@/data/confetti.json";
 import MagicButton from "./MagicButton";
 import { SparklesCore } from "./sparkles";
 import { BackgroundBeams } from "./background-beams";
+import Image from "next/image"; // Import Image from Next.js
+import GridGlobe from "./GridGlobe";
+// Dynamically import Lottie component with SSR turned off
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+
 export const BentoGrid = ({
   className,
   children,
@@ -50,22 +55,26 @@ export const BentoGridItem = ({
 }) => {
   const leftLists = ["ReactJS", "Express", "Typescript"];
   const rightLists = ["VueJS", "NuxtJS", "GraphQL"];
-
   const [copied, setCopied] = useState(false);
+  const [isClient, setIsClient] = useState(false); // State to track client-side mount
 
-  const defaultOptions = {
-    loop: copied,
-    autoplay: copied,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
+  useEffect(() => {
+    setIsClient(true); // Set to true once component is mounted on client
+  }, []);
 
   const handleCopy = () => {
     const text = "zinothedev@gmail.com";
-    navigator.clipboard.writeText(text);
-    setCopied(true);
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      // Check for navigator and clipboard
+      navigator.clipboard.writeText(text);
+      setCopied(true);
+    } else {
+      // Fallback or error handling if clipboard API is not available
+      console.log("Clipboard API not available");
+      // Optionally, provide a manual way to copy or inform the user.
+      // For now, just setting copied to true to maintain UI feedback.
+      setCopied(true);
+    }
   };
 
   return (
@@ -87,10 +96,12 @@ export const BentoGridItem = ({
       <div className={`${id === 6 && "flex justify-center"} h-full`}>
         <div className="w-full h-full absolute">
           {img && (
-            <img
+            <Image
               src={img}
               alt={img}
-              className={cn(imgClassName, "object-cover object-center ")}
+              fill={true} // Changed from layout="fill"
+              sizes="(max-width: 768px) 100vw, 50vw" // Added sizes prop
+              className={cn(imgClassName, "object-cover object-center")} // Ensure object-cover is here, removed objectFit prop
             />
           )}
         </div>
@@ -100,10 +111,12 @@ export const BentoGridItem = ({
           } `}
         >
           {spareImg && (
-            <img
+            <Image
               src={spareImg}
               alt={spareImg}
-              //   width={220}
+              width={220}
+              height={220}
+              sizes="(max-width: 768px) 100vw, 50vw" // Added sizes prop
               className="object-cover object-center w-full h-full"
             />
           )}
@@ -134,7 +147,7 @@ export const BentoGridItem = ({
           </div>
 
           {/* for the github 3d globe */}
-          {id === 2}
+          {id === 2 && <GridGlobe />}
 
           {/* Tech stack list div */}
           {id === 3 && (
@@ -166,30 +179,35 @@ export const BentoGridItem = ({
               </div>
             </div>
           )}
-          {id === 6 && (
-            <div className="mt-5 relative">
-              {/* button border magic from tailwind css buttons  */}
-              {/* add rounded-md h-8 md:h-8, remove rounded-full */}
-              {/* remove focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 */}
-              {/* add handleCopy() for the copy the text */}
-              <div
-                className={`absolute -bottom-5 right-0 ${
-                  copied ? "block" : "block"
-                }`}
-              >
-                {/* <img src="/confetti.gif" alt="confetti" /> */}
-                <Lottie options={defaultOptions} height={200} width={400} />
+          {id === 6 &&
+            isClient && ( // Conditionally render Lottie only on client-side
+              <div className="mt-5 relative">
+                {/* button border magic from tailwind css buttons  */}
+                {/* add rounded-md h-8 md:h-8, remove rounded-full */}
+                {/* remove focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 */}
+                {/* add handleCopy() for the copy the text */}{" "}
+                <div
+                  className={`absolute -bottom-5 right-0 ${
+                    copied ? "block" : "block"
+                  }`}
+                >
+                  {/* <img src="/confetti.gif" alt="confetti" /> */}
+                  <Lottie
+                    animationData={animationData}
+                    loop={copied}
+                    autoplay={copied}
+                    style={{ height: 200, width: 400 }}
+                  />
+                </div>
+                <MagicButton
+                  title={copied ? "Email is Copied!" : "Copy my email address"}
+                  icon={<IoCopyOutline />}
+                  position="left"
+                  handleClick={handleCopy}
+                  otherClasses="!bg-[#161A31]"
+                />
               </div>
-
-              <MagicButton
-                title={copied ? "Email is Copied!" : "Copy my email address"}
-                icon={<IoCopyOutline />}
-                position="left"
-                handleClick={handleCopy}
-                otherClasses="!bg-[#161A31]"
-              />
-            </div>
-          )}
+            )}
         </div>
       </div>
     </div>

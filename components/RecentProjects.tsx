@@ -37,11 +37,20 @@ const RecentProjects = () => {
                         className="relative w-full h-full overflow-hidden lg:rounded-3xl"
                         style={{ backgroundColor: "#13162D" }}
                       >
-                        <img src="/bg.png" alt="background image" />
+                        <Image
+                          src="/bg.png"
+                          alt="background image"
+                          fill={true} // Replace layout="fill"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Add sizes
+                          className="object-cover" // Replace objectFit="cover"
+                        />
                       </div>
-                      <img
+                      <Image
                         src={img}
                         alt={title}
+                        width={500}
+                        height={300}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Add sizes
                         className="z-10 absolute bottom-0 w-[90%] h-[90%] object-contain p-2"
                       />
                     </div>
@@ -66,9 +75,13 @@ const RecentProjects = () => {
                               transform: `translateX(-${5 * index * 2}px)`,
                             }}
                           >
-                            <img
+                            <Image
                               src={icon}
                               alt={`icon-${index}`}
+                              width={20}
+                              height={20}
+                              // sizes prop might not be strictly necessary here due to fixed small size
+                              // but can be added if responsive scaling is intended
                               className="p-2"
                             />
                           </div>
