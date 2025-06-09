@@ -53,8 +53,8 @@ export const BentoGridItem = ({
   titleClassName?: string;
   spareImg?: string;
 }) => {
-  const leftLists = ["ReactJS", "Express", "Typescript"];
-  const rightLists = ["VueJS", "NuxtJS", "GraphQL"];
+  const leftLists = ["React", "Node.js", "TypeScript"];
+  const rightLists = ["Python", "MongoDB", "AWS"];
   const [copied, setCopied] = useState(false);
   const [isClient, setIsClient] = useState(false); // State to track client-side mount
 

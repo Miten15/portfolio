@@ -1,9 +1,11 @@
 "use client";
+import { socialMedia } from "@/data";
 import MagicButton from "./ui/MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { SparklesCore } from "./ui/sparkles";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
 import { FaLocationArrow } from "react-icons/fa";
+import Image from "next/image"; // Import next/image
 
 const Hero = () => {
   return (
@@ -62,18 +64,36 @@ const Hero = () => {
             words="I Transform Concepts into seamless user experiences"
             className="text-center text-[40px] md:text-5xl lg:text-6xl"
           />
-
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl text-white">
             Hi! I&apos;m Miten, a Developer based in India.
-          </p>
-
+          </p>{" "}
           <div className="w-[40rem] h-40 relative">
             <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
             <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
             <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[5px] w-1/4 blur-sm" />
             <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-1/4" />
           </div>
-          <div className="pt-100">
+          {/* Social Media Links */}
+          <div className="flex items-center justify-center gap-4 mb-8">
+            {socialMedia.map((info) => (
+              <a
+                key={info.id}
+                href={info.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300 hover:border-purple-500 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/25"
+              >
+                <Image
+                  src={info.img}
+                  alt="social media icon"
+                  width={24}
+                  height={24}
+                  className="filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity duration-300"
+                />
+              </a>
+            ))}
+          </div>
+          <div className="pt-4">
             <a href="#projects">
               <MagicButton
                 title="Show my work"
